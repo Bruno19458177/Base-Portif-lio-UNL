@@ -1,3 +1,4 @@
+/*	Criando a tabela de PRODUTO*/
 CREATE TABLE PRODUTO(
 EAN INT PRIMARY KEY NOT NULL IDENTITY(1,1),
 DESCRICAO VARCHAR(100),
@@ -6,11 +7,13 @@ BU VARCHAR(50),
 CATEGORIA VARCHAR(50),
 PPA VARCHAR(50));
 
+/*	Criando a tabela de CLIENTE*/
 CREATE TABLE CLIENTE(
 ID_CLIENTE INT PRIMARY KEY NOT NULL IDENTITY(1,1),
 NOME_CLIENTE CHAR(30),
 CANAL CHAR(30));
 
+/*	Criando a tabela de CALENDÁRIO*/
 CREATE TABLE CALENDARIO(
 ID_TEMPO INT PRIMARY KEY NOT NULL IDENTITY(1,1),
 "DATA" DATE,
@@ -18,6 +21,7 @@ ANO INT,
 MES INT,
 NOME_MES VARCHAR(15));
 
+/*	Criando a tabela de SELLOUT*/
 CREATE TABLE SELLOUT(
 ID_SELLOUT INT PRIMARY KEY NOT NULL IDENTITY(1,1),
 ID_TEMPO INT NOT NULL,
@@ -36,3 +40,37 @@ CONSTRAINT FK_SELLOUT_EAN FOREIGN KEY(EAN)
 REFERENCES PRODUTO(EAN));
 
 SELECT*FROM CALENDARIO
+
+/*----------------------------------------------------------------*/
+            /*ALTERAÇÕES NAS TABELAS*/
+
+USE [Base Portifólio]
+
+/* Fazendo uma consulta simples*/
+SELECT * FROM CANAL
+
+/*Criando uma nova tabela de CANAL para fazer o relacionamento com o cliente*/
+CREATE TABLE CANAL
+(
+	ID_CANAL INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	CANAL CHAR(30)
+);
+
+/* Alterando o tipo de dados da coluna ID_CANAL de CHAR para INT da tabela CLIENTE que já havia sido criada*/
+ALTER TABLE CLIENTE
+ALTER COLUMN ID_CANAL INT
+
+/* Alterando a coluna de CANAL da tabela CLIENTE para que ela se torne uma FK(Chave estrangeira)*/
+ ALTER TABLE CLIENTE
+ ADD CONSTRAINT CANAL_CLIENTE
+ FOREIGN KEY (ID_CANAL) REFERENCES CANAL(ID_CANAL);
+
+ /*-------------------------------------------------------------------*/
+                 /*INSERÇÃO DE DADOS*/
+
+SELECT * FROM CANAL
+
+INSERT INTO CANAL(CANAL)
+VALUES
+	( 'DIGITAL'),
+	( 'REDE');
