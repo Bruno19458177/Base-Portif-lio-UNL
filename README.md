@@ -8,7 +8,9 @@ Este projeto foi desenvolvido para resolver a falta de consistência e o atraso 
 PRINCIPAIS IMPLEMENTAÇÕES:
 
  -Automação de Dados: Substituí processos manuais por fluxos automatizados, eliminando erros humanos e fórmulas de difícil manutenção.
+ 
  -Atualização Agendada: Implementei rotinas de atualização automática (duas vezes ao dia), garantindo que o time sempre trabalhasse com dados recentes.
+ 
  -Integridade e Alinhamento: Padronizei os dados para garantir total integridade e alinhamento com os demais indicadores da empresa.
 
 Resultado: O time passou a contar com um dashboard confiável, atualizado em tempo real e com dados precisos para a tomada de decisão.
